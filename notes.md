@@ -1,8 +1,8 @@
 Market
 has_many :items
-:name - string, :location - string, :open - boolean
+:name - string, :location - string, :is_open - boolean
 
 
 Item
 belongs_to :market
-:market_id - integer, :name - string, :price - float, :amount_available - integer
+:market_id - integer, :name - string, :description - string, :price - float, :amount_available - integer
