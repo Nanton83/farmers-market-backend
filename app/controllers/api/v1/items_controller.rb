@@ -2,17 +2,19 @@ class Api::V1::ItemsController < ApplicationController
     
     # Actions...
 
+    before_action: set_market
+
     def index
         @items = Item.all
         render json: @items
     end
 
     def create
-        @item = Item.new(item_params)
+        @item = @market.items.new(item_params)
         if @item.save
             render json: @item
         else
-            render json: {error: 'ERROR: Item Not Created'}
+            render json: {error: 'ITEM NOT CREATED'}
         end
     end
 
@@ -28,8 +30,12 @@ class Api::V1::ItemsController < ApplicationController
 
     private
 
+    def set_market
+        @market = Market.find(parmas[:market_id])
+    end
+
     def item_params
-        params.require(:item).permit(:mareket_id, :name, :description, :price, :amount_available, :unit)
+        params.require(:item).permit(:market_id, :name, :description, :price, :amount_available, :unit)
     end
 
 end
