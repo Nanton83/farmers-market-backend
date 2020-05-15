@@ -8,6 +8,7 @@ class Api::V1::MarketsController < ApplicationController
     end
 
     def create
+        # binding.pry
         @market = Market.new(market_params)
         if @market.save
             render json: @market
