@@ -1,3 +1,3 @@
-market = Market.create(name: 'Brooks Street Downtown', location: 'Wake Forest, NC', is_open: true)
-
-item = Item.create(market_id: 1, name: 'Blueberries', description: 'Perfectly Ripe', price: 1.50, amount_available: 10, unit: 'pound')
+market = Market.create(name: 'Brooks Street Downtown', location: 'Wake Forest, NC')
+market = Market.create(name: 'Weyland Heights', location: 'South 31st Street')
+market = Market.create(name: 'Easter Local', location: 'Sampson Avenue')

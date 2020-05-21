@@ -30,7 +30,7 @@ class Api::V1::MarketsController < ApplicationController
     private
 
     def market_params
-        params.require(:market).permit(:name, :location, :is_open)
+        params.require(:market).permit(:name, :location)
     end
 
 

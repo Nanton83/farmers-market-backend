@@ -2,7 +2,7 @@ class Api::V1::ItemsController < ApplicationController
     
     # Actions...
 
-    # before_action :set_market
+    before_action :set_market
 
     def index
         @items = Item.all
@@ -10,9 +10,11 @@ class Api::V1::ItemsController < ApplicationController
     end
 
     def create
+        
         @item = @market.items.new(item_params)
         if @item.save
-            render json: @item
+            # sending market associated with item to clean up frontend
+            render json: @market
         else
             render json: {error: 'ITEM NOT CREATED'}
         end
@@ -30,9 +32,9 @@ class Api::V1::ItemsController < ApplicationController
 
     private
 
-    # def set_market
-    #     @market = Market.find(params[:market_id])
-    # end
+    def set_market
+        @market = Market.find(params[:market_id])
+    end
 
     def item_params
         params.require(:item).permit(:market_id, :name, :description, :price, :amount_available, :unit)
