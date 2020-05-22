@@ -26,8 +26,10 @@ class Api::V1::ItemsController < ApplicationController
     end
 
     def destroy
-        @item = Item.find(params[:id])
+        @item = Item.find(params["id"])
+        @market = Market.find(@item.market_id)
         @item.destroy
+        render json: @market
     end
 
     private
